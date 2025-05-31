@@ -1,3 +1,5 @@
+import Todo from "./todo.js";
+
 export default class Project {
   constructor(name, todos = []) {
     this.id = crypto.randomUUID();
@@ -11,5 +13,12 @@ export default class Project {
 
   deleteTodo(id) {
     this.todos = this.todos.filter(todo => todo.id !== id);
+  }
+
+  static fromJSON(obj) {
+    const project = new Project(obj.name);
+    project.id = obj.id;
+    project.todos = obj.todos.map(todoObj => Todo.fromJSON(todoObj));
+    return project;
   }
 }

@@ -1,0 +1,154 @@
+@font-face {
+  font-family: "Roboto";
+  src:
+    url("assets/fonts/Roboto-Regular.woff2") format("woff2"),
+    url("assets/fonts/Roboto-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --header-height: 100px;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+  border: none;
+  outline: none;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background-color: #1892d3;
+  color: white;
+  height: var(--header-height);
+}
+
+main {
+  display: flex;
+  min-height: calc(100vh - var(--header-height));
+}
+
+nav {
+  background-color: #e5e7eb;
+  width: 300px;
+  padding: 20px;
+  box-shadow: 4px 0 8px -4px #aaa;
+}
+
+.projects-list {
+  list-style-type: none;
+  margin: 20px 0;
+}
+
+.project-button,
+.new-project-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1ch;
+  background: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+}
+
+.project-button:hover,
+.new-project-button:hover {
+  background-color: #ccc;
+}
+
+.delete-icon {
+  display: none;
+}
+
+.project-button:hover .delete-icon {
+  display: inline-block;
+}
+
+.project-button {
+  position: relative;
+  text-align: left;
+}
+
+.project-button.active {
+  background-color: #ccc;
+  font-weight: bold;
+}
+
+.delete-icon {
+  position: absolute;
+  right: 10px;
+}
+
+.new-project-button {
+  font-size: 1.2rem;
+}
+
+.new-project-button.active {
+  display: none;
+}
+
+.new-project-form {
+  display: none;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.new-project-form.active {
+  display: grid;
+}
+
+.new-project-form > * {
+  font-size: 1.2rem;
+}
+
+.new-project-form > input {
+  grid-column: -1 / 1;
+  padding: 10px;
+  border: 1px solid #aaa;
+  border-radius: 10px;
+}
+
+.new-project-form > button {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.add {
+  background-color: #afa;
+  border: 1px solid #9d9;
+}
+
+.add:hover {
+  background-color: #a6f0a6;
+}
+
+.cancel {
+  background-color: #ffbebe;
+  border: 1px solid #eeadad
+}
+
+.cancel:hover {
+  background-color: #f5b2b2;
+}

@@ -13,4 +13,10 @@ export default class Todo {
     if (dueDate !== undefined) this.dueDate = dueDate;
     if (priority !== undefined) this.priority = priority;
   }
+
+  static fromJSON(obj) {
+    const todo = new Todo(obj.title, obj.description, obj.dueDate, obj.priority);
+    todo.id = obj.id;
+    return todo;
+  }
 }
