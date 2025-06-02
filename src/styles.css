@@ -25,7 +25,8 @@ body {
 }
 
 button,
-input {
+input,
+textarea {
   font: inherit;
   color: inherit;
   border: none;
@@ -45,6 +46,7 @@ header {
 main {
   display: flex;
   min-height: calc(100vh - var(--header-height));
+  background-color: #f9f9f9;
 }
 
 nav {
@@ -117,30 +119,30 @@ nav {
   display: grid;
 }
 
-.new-project-form > * {
-  font-size: 1.2rem;
+.new-project-form > *,
+.todo-form > * {
+  padding: 10px;
+  border-radius: 10px;
 }
 
 .new-project-form > input {
   grid-column: -1 / 1;
-  padding: 10px;
   border: 1px solid #aaa;
-  border-radius: 10px;
 }
 
 .new-project-form > button {
-  border-radius: 10px;
-  padding: 10px;
   font-size: 1rem;
   font-weight: bold;
 }
 
-.add {
+.add,
+.save {
   background-color: #afa;
   border: 1px solid #9d9;
 }
 
-.add:hover {
+.add:hover,
+.save:hover {
   background-color: #a6f0a6;
 }
 
@@ -151,4 +153,110 @@ nav {
 
 .cancel:hover {
   background-color: #f5b2b2;
+}
+
+.project-todos {
+  width: 900px;
+  padding: 20px 40px;
+}
+
+.todo-list {
+  list-style-type: none;
+  margin: 20px 0;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  background-color: #e5e7eb;
+  padding: 10px;
+  border-radius: 10px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  margin-bottom: 20px;
+}
+
+.todo-item button {
+  background: none;
+}
+
+.todo-item.low {
+  border-left-color: green;
+}
+
+.todo-item.medium {
+  border-left-color: orange;
+}
+
+.todo-item.high {
+  border-left-color: red;
+}
+
+.todo-item.expanded > .bottom {
+  display: block;
+}
+
+.complete {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.todo-item > .left,
+.todo-item > .right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.todo-item > .right {
+  justify-content: flex-end;
+}
+
+.todo-item > .bottom {
+  display: none;
+  grid-column: 1 / -1;
+  text-align: justify;
+  padding: 10px;
+}
+
+.new-todo-button {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1ch;
+  background: none;
+  border-radius: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 1.2rem;
+}
+
+.new-todo-button:hover {
+  background-color: #e5e7eb;
+}
+
+.todo-form {
+  display: grid;
+  grid-template: 1fr 2fr 1fr / 3fr 2fr 2fr 3fr;
+  gap: 10px;
+}
+
+.todo-form > * {
+  border: 1px solid #ccc;
+}
+
+.todo-form > input[type="text"],
+.todo-form > textarea {
+  grid-column: 1 / -1;
+}
+
+.todo-form > textarea {
+  resize: none;
+}
+
+.todo-form > .add,
+.todo-form > .save,
+.todo-form > .cancel {
+  font-weight: bold;
 }

@@ -5,6 +5,7 @@ export default class Todo {
     this.description = description;
     this.dueDate = dueDate;
     this.priority = priority;
+    this.complete = false;
   }
 
   edit({ title, description, dueDate, priority }) {
@@ -14,9 +15,14 @@ export default class Todo {
     if (priority !== undefined) this.priority = priority;
   }
 
+  toggleComplete() {
+    this.complete = !this.complete;
+  }
+
   static fromJSON(obj) {
     const todo = new Todo(obj.title, obj.description, obj.dueDate, obj.priority);
     todo.id = obj.id;
+    todo.complete = obj.complete;
     return todo;
   }
 }
