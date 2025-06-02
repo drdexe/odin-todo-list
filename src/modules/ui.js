@@ -168,7 +168,7 @@ export default (function () {
     projectPage.appendChild(newTodoForm);
 
     initTodoForm();
-    toggleEditButtons();
+    disableEditButtons();
   }
 
   function initTodoForm() {
@@ -243,7 +243,7 @@ export default (function () {
 
     projectPage.removeChild(todoForm);
     createNewTodoButton();
-    toggleEditButtons();
+    enableEditButtons();
   }
 
   function getTodoItem(todo) {
@@ -343,7 +343,9 @@ export default (function () {
     rightDiv.classList.add("right");
 
     const span = document.createElement("span");
-    span.textContent = format(new Date(todo.dueDate), "eee, do MMM");
+    if (todo.dueDate) {
+      span.textContent = format(new Date(todo.dueDate), "eee, do MMM");
+    }
 
     const editButton = document.createElement("button");
     const editImage = document.createElement("img");
@@ -368,6 +370,8 @@ export default (function () {
   }
 
   function openEditTodoForm(e) {
+    e.stopPropagation();
+
     const projectPage = document.querySelector(".project-todos");
     const newTodoButton = document.querySelector(".new-todo-button");
 
@@ -382,13 +386,20 @@ export default (function () {
     projectPage.appendChild(newTodoForm);
 
     initTodoForm();
-    toggleEditButtons();
+    disableEditButtons();
   }
 
-  function toggleEditButtons() {
+  function disableEditButtons() {
     const editButtons = document.querySelectorAll(".right > button:nth-child(2)");
     editButtons.forEach(button => {
-      button.disabled = !button.disabled;
+      button.disabled = true;
+    });
+  }
+
+  function enableEditButtons() {
+    const editButtons = document.querySelectorAll(".right > button:nth-child(2)");
+    editButtons.forEach(button => {
+      button.disabled = false;
     });
   }
 
