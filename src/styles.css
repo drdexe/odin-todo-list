@@ -260,3 +260,19 @@ nav {
 .todo-form > .cancel {
   font-weight: bold;
 }
+
+
+@media (max-width: 600px) {
+  main {
+    flex-direction: column;
+  }
+
+  nav {
+    width: unset;
+    box-shadow: 0 4px 8px -4px #aaa;
+  }
+
+  .project-todos {
+    width: unset;
+  }
+}
