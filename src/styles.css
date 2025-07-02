@@ -218,6 +218,7 @@ nav {
   grid-column: 1 / -1;
   text-align: justify;
   padding: 10px;
+  white-space: pre;
 }
 
 .new-todo-button {
